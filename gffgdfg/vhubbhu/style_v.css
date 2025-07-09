@@ -1,0 +1,93 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", sans-serif;
+    line-height: 1.6;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+header {
+    background-image: url('https://palatka.bg/wp-content/uploads/2017/04/Untitled-design-4-2.png');
+    background-size: cover;
+    background-position: center;
+    color: rgb(255, 255, 255);
+    padding: 80px 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 3em;
+    text-shadow: 2px 2px 4px #000;
+}
+
+nav {
+    background-color: #333;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+nav ul li {
+    margin: 20px 20px;
+}
+
+nav ul li a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #f4d03f;
+}
+
+section {
+    padding: 40px 20px;
+    max-width: 900px;
+    margin: auto;
+}
+
+#gallery .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+
+#gallery img {
+    width: 280px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: transform 0.3s;
+}
+
+#gallery img:hover {
+    transform: scale(1.05);
+}
+
+
+section {
+    padding: 40px 20px;
+    max-width: 900px;
+    margin: auto;
+}
+
+
+footer {
+    background-color: #222;
+    color: #eee;
+    text-align: center;
+    padding: 20px 10px;
+}

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>JS lvl 1 pt 2</title>
+</head>
+<body>
+	<input id="name" placeholder="Enter name">
+	<button id="dowork">Do the thing</button>
+	<p id="welcome"></p>
+ 
+	<script defer>
+		document.getElementById("dowork").addEventListener("click", function (e) {
+			document.getElementById("welcome").innerHTML = "Welcome " + document.getElementById("name").value;
+		});
+	</script>
+</body>
+</html>

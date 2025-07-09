@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>To-Do List</title>
+  <style>
+    body {
+      background: #f0f4f8;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      padding: 40px;
+    }
+
+    .todo {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 300px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    .input-group {
+      display: flex;
+      margin-bottom: 15px;
+    }
+
+    input {
+      flex: 1;
+      padding: 8px;
+      border: 2px solid #a2d5f2;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    button#addBtn {
+      padding: 8px 12px;
+      margin-left: 5px;
+      background: #1b6aa1;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      cursor: pointer;
+    }
+
+    button#addBtn:hover {
+      background: #024f80;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 0;
+    }
+
+    li {
+      background: #a2d5f2;
+      margin: 6px 0;
+      padding: 10px;
+      border-radius: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #034f84;
+      cursor: pointer;
+    }
+
+    li.done {
+      text-decoration: line-through;
+      color: #888;
+      background: #d3d3d3;
+    }
+
+    button.remove-btn {
+      background: #ff6b6b;
+      border: none;
+      border-radius: 4px;
+      color: white;
+      padding: 4px 8px;
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+
+    button.remove-btn:hover {
+      background: #d40101;
+    }
+  </style>
+</head>
+<body>
+
+<div class="todo">
+  <h2>To-Do List</h2>
+
+  <div class="input-group">
+    <input type="text" id="taskInput" placeholder="Add new task" />
+    <button id="addBtn">Add</button>
+  </div>
+
+  <ul id="list"></ul>
+</div>
+
+<script>
+  const list = document.getElementById('list');
+  const input = document.getElementById('taskInput');
+  const addBtn = document.getElementById('addBtn');
+
+  window.onload = () => {
+    const savedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    savedTasks.forEach(task => {
+      addTaskToDOM(task.text, task.done);
+    });
+  };
+
+  function saveTasks() {
+    const tasks = [];
+    list.querySelectorAll('li').forEach(li => {
+      tasks.push({
+        text: li.querySelector('.task-text').textContent,
+        done: li.classList.contains('done')
+      });
+    });
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }
+
+  function addTaskToDOM(text, done = false) {
+    const li = document.createElement('li');
+
+    const span = document.createElement('span');
+    span.className = 'task-text';
+    span.textContent = text;
+    li.appendChild(span);
+
+    if (done) li.classList.add('done');
+
+    span.onclick = () => {
+      li.classList.toggle('done');
+      saveTasks();
+    };
+
+    const removeBtn = document.createElement('button');
+    removeBtn.textContent = 'Remove';
+    removeBtn.className = 'remove-btn';
+    removeBtn.onclick = () => {
+      li.remove();
+      saveTasks();
+    };
+
+    li.appendChild(removeBtn);
+    list.appendChild(li);
+  }
+
+  addBtn.onclick = () => {
+    const task = input.value.trim();
+    if (task) {
+      addTaskToDOM(task);
+      saveTasks();
+      input.value = '';
+      input.focus();
+    }
+  };
+
+  input.onkeypress = (e) => {
+    if (e.key === 'Enter') {
+      addBtn.click();
+    }
+  };
+</script>
+
+</body>
+</html>
