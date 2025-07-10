@@ -1,23 +1,50 @@
 /* App.css */
+:root {
+  --primary-color: #3a7bd5;
+  --primary-gradient: linear-gradient(45deg, #3a7bd5, #00d2ff);
+  --danger-gradient: linear-gradient(45deg, #ff416c, #ff4b2b);
+  --bg-gradient: linear-gradient(120deg, #f6f9fc 0%, #ecf3f9 100%);
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.07);
+  --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+}
+
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background: #f4f7fa;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: var(--bg-gradient);
   margin: 0;
   padding: 0;
+  height: 100vh;
+  color: #2d3748;
+  line-height: 1.6;
+  overflow: hidden;
+}
+
+.app-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .todo {
+  width: 90%;
   max-width: 500px;
-  margin: 3rem auto;
   background: white;
   padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  box-shadow: var(--shadow-lg);
+  margin-bottom: 10vh; /* Offset slightly up from dead center */
 }
 
 .todo h2 {
   text-align: center;
-  color: #333;
+  margin-bottom: 1.5rem;
+  color: #1a202c;
+  font-size: 1.8rem;
+  font-weight: 600;
 }
 
 .input-group {
@@ -34,19 +61,34 @@ input[type="text"] {
   border-radius: 5px;
 }
 
+/* Base button style */
 button {
-  padding: 0.75rem 1rem;
-  font-size: 1rem;
+  font-weight: 500;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
-  background-color: #0077ff;
-  color: white;
-  transition: background-color 0.2s ease;
+  transition: all 0.2s ease;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.9rem;
+  text-transform: none;
+  letter-spacing: 0.3px;
 }
 
-button:hover {
-  background-color: #005fd1;
+/* Add Button */
+.input-group button {
+  background: var(--primary-gradient);
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(58, 123, 213, 0.2);
+}
+
+.input-group button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(58, 123, 213, 0.3);
+}
+
+.input-group button:active {
+  transform: translateY(0);
 }
 
 ul {
@@ -72,13 +114,22 @@ li.done .task-text {
   flex-grow: 1;
 }
 
+/* Remove Button */
 .remove-btn {
-  background-color: #ff4d4d;
-  margin-left: 1rem;
+  background: #fff;
+  color: #dc2626;
+  border: 1px solid #fee2e2;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
 }
 
 .remove-btn:hover {
-  background-color: #d93636;
+  background: #fee2e2;
+  border-color: #dc2626;
+}
+
+.remove-btn:active {
+  transform: translateY(0);
 }
 
 .controls {
@@ -89,11 +140,62 @@ li.done .task-text {
   color: #555;
 }
 
+/* Control Buttons */
 .controls button {
-  background-color: #ccc;
-  color: #333;
+  background: #fff;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+  font-size: 0.85rem;
+  padding: 0.5rem 1rem;
 }
 
 .controls button:hover {
-  background-color: #aaa;
+  background: #f8fafc;
+  border-color: #cbd5e0;
+  color: #1e293b;
+}
+
+.controls button:active {
+  transform: translateY(0);
+}
+
+/* Task Buttons Container */
+.task-buttons {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+/* Finish Button */
+.finish-btn {
+  background: #fff;
+  color: #059669;
+  border: 1px solid #d1fae5;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+}
+
+.finish-btn:hover:not(:disabled) {
+  background: #d1fae5;
+  border-color: #059669;
+}
+
+.finish-btn:disabled {
+  background: #f1f5f9;
+  color: #94a3b8;
+  border-color: #e2e8f0;
+  cursor: not-allowed;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .task-buttons {
+    gap: 0.5rem;
+  }
+  
+  .remove-btn,
+  .finish-btn {
+    padding: 0.35rem 0.7rem;
+    font-size: 0.8rem;
+  }
 }
