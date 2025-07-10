@@ -14,19 +14,12 @@ body {
   background: var(--bg-gradient);
   margin: 0;
   padding: 0;
-  height: 100vh;
+  min-height: 100vh;
   color: #2d3748;
   line-height: 1.6;
-  overflow: hidden;
-}
-
-.app-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  padding: 0;
-  box-sizing: border-box;
 }
 
 .todo {
@@ -36,7 +29,10 @@ body {
   padding: 2rem;
   border-radius: 16px;
   box-shadow: var(--shadow-lg);
-  margin-bottom: 10vh; /* Offset slightly up from dead center */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .todo h2 {

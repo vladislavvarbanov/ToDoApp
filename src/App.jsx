@@ -40,11 +40,10 @@ function App() {
   }
 
   return (
-    <div className="app-container">
-      <div className="todo">
-        <h2>To-Do List</h2>
+    <div className="todo">
+      <h2>To-Do List</h2>
 
-        <div className="input-group">
+      <div className="input-group">
           <input
             type="text"
             placeholder="Add new task"
@@ -89,7 +88,6 @@ function App() {
             </button>
           </div>
         </div>
-      </div>
     </div>
   );
 }
