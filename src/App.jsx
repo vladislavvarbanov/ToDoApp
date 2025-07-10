@@ -2,7 +2,6 @@ import './App.css';
 
 function App() {
   return (
-  <>
   <div className="todo">
     <h2>To-Do List</h2>
 
@@ -43,7 +42,6 @@ function App() {
       </div>
     </div>
   </div>
-    </>
 );
 }
 
