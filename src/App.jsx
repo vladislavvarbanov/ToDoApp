@@ -1,5 +1,4 @@
 return (
-  <>
   <div className="todo">
     <h2>To-Do List</h2>
 
@@ -42,3 +41,7 @@ return (
   </div>
   </>
 );
+}
+
+export default App;
+
