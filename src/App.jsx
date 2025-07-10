@@ -1,4 +1,33 @@
-return (
+import './App.css';
+import { useState, useRef } from 'react';
+
+function App() {
+  let input = "";
+  let handleInputKeyPress = (e) => {
+    if (e.key === "Enter") {
+      addTask();
+    }
+  }
+  let addTask = () => {
+    if (input.trim() !== "") {
+      tasks.push({ text: input, done: false });
+      input = "";
+    }
+  }
+  let removeTask = (idx) => {
+    tasks.splice(idx, 1);
+  }
+  let toggleTask = (idx) => {
+    tasks[idx].done = !tasks[idx].done;
+  }
+  let [tasks, setTasks] = useState([]);
+  let inputRef = useRef(null);
+
+  let setInput = (e) => {
+    input = e;
+  }
+
+  return (
   <div className="todo">
     <h2>To-Do List</h2>
 
@@ -39,7 +68,6 @@ return (
       </div>
     </div>
   </div>
-  </>
 );
 }
 
